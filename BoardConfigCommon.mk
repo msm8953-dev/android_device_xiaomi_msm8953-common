@@ -1,5 +1,6 @@
 #
 # Copyright (C) 2017-2019 The LineageOS Project
+# Copyright (C) 2020 Paranoid Android
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -31,13 +32,10 @@ TARGET_2ND_CPU_VARIANT := cortex-a53
 
 TARGET_BOARD_PLATFORM := msm8953
 TARGET_BOARD_PLATFORM_GPU := qcom-adreno506
-BUILD_BROKEN_DUP_RULES := true
-BUILD_BROKEN_PHONY_TARGETS := true
-
-TARGET_BOARD_SUFFIX := _64
 
 # Build
 BUILD_BROKEN_DUP_RULES := true
+BUILD_BROKEN_PHONY_TARGETS := true
 
 # Kernel
 BOARD_KERNEL_BASE := 0x80000000
@@ -131,15 +129,9 @@ TARGET_QCOM_NO_FM_FIRMWARE := true
 USE_DEVICE_SPECIFIC_GPS := true
 TARGET_NO_RPC := true
 
-# Filesystem
-TARGET_FS_CONFIG_GEN := $(VENDOR_PATH)/config.fs
-
 # HIDL
-DEVICE_MANIFEST_FILE := $(VENDOR_PATH)/manifest.xml
-DEVICE_MATRIX_FILE   := $(VENDOR_PATH)/compatibility_matrix.xml
-
-# HWUI
-HWUI_COMPILE_FOR_PERF := true
+DEVICE_MANIFEST_FILE := $(VENDOR_PATH)/configs/hidl/manifest.xml
+DEVICE_MATRIX_FILE   := $(VENDOR_PATH)/configs/hidl/compatibility_matrix.xml
 
 # Init
 TARGET_INIT_VENDOR_LIB := libinit_msm8953
@@ -171,14 +163,13 @@ TARGET_PROVIDES_QTI_TELEPHONY_JAR := true
 
 # Recovery
 ifeq ($(ENABLE_AB), true)
-TARGET_RECOVERY_FSTAB := $(VENDOR_PATH)/rootdir/fstab_AB.qcom
+TARGET_RECOVERY_FSTAB := $(VENDOR_PATH)/rootdir/etc/fstab_AB.qcom
 else
-TARGET_RECOVERY_FSTAB := $(VENDOR_PATH)/rootdir/fstab.qcom
+TARGET_RECOVERY_FSTAB := $(VENDOR_PATH)/rootdir/etc/fstab.qcom
 endif
 
 # SELinux
-#include device/qcom/sepolicy-legacy-um/sepolicy.mk
-BOARD_SEPOLICY_DIRS += $(VENDOR_PATH)/sepolicy
+BOARD_SEPOLICY_DIRS += $(VENDOR_PATH)/sepolicy/vendor
 
 # Wi-Fi
 BOARD_HAS_QCOM_WLAN := true
@@ -191,9 +182,6 @@ WIFI_DRIVER_FW_PATH_AP := "ap"
 WIFI_DRIVER_FW_PATH_STA := "sta"
 WIFI_HIDL_FEATURE_DISABLE_AP_MAC_RANDOMIZATION := true
 WPA_SUPPLICANT_VERSION := VER_0_8_X
-
-# Telephony
-TARGET_USES_ALTERNATIVE_MANUAL_NETWORK_SELECT := true
 
 # Inherit from the proprietary version
 -include vendor/xiaomi/msm8953-common/BoardConfigVendor.mk
