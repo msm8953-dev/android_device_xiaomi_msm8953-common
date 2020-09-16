@@ -1,3 +1,4 @@
+bash: hermal: command not found
 #
 # Copyright (C) 2020 Paranoid Android
 # Copyright (C) 2017 The LineageOS Project
@@ -297,10 +298,6 @@ PRODUCT_COPY_FILES += \
 # TextClassifier smart selection model files
 PRODUCT_PACKAGES += \
     textclassifier.bundle1
-
-# Thermal
-PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/configs/thermal-engine.conf:$(TARGET_COPY_OUT_VENDOR)/etc/thermal-engine.conf
 
 # QTI Common
 TARGET_COMMON_QTI_COMPONENTS := \
