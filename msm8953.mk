@@ -304,11 +304,7 @@ PRODUCT_COPY_FILES += \
 
 # QTI Common
 TARGET_COMMON_QTI_COMPONENTS := \
-    av \
-    bt \
-    perf \
-    telephony \
-    wfd
+    perf 
 
 # USB HAL
 PRODUCT_PACKAGES += \
