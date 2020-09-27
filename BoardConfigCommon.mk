@@ -161,13 +161,6 @@ BOARD_USES_QCOM_HARDWARE := true
 # RIL
 TARGET_PROVIDES_QTI_TELEPHONY_JAR := true
 
-# Recovery
-ifeq ($(ENABLE_AB), true)
-TARGET_RECOVERY_FSTAB := $(VENDOR_PATH)/rootdir/etc/fstab_AB.qcom
-else
-TARGET_RECOVERY_FSTAB := $(VENDOR_PATH)/rootdir/etc/fstab.qcom
-endif
-
 # SELinux
 BOARD_SEPOLICY_DIRS += $(VENDOR_PATH)/sepolicy/vendor
 

@@ -1,4 +1,3 @@
-bash: hermal: command not found
 #
 # Copyright (C) 2020 Paranoid Android
 # Copyright (C) 2017 The LineageOS Project
